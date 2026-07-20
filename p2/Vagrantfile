@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
 	ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
 
-	config.vm.box = "generic/debian12"
+	config.vm.box = "debian/trixie64"
 	
 	config.vm.define "junguyenS" do |control|
 		control.vm.hostname = "junguyenS"

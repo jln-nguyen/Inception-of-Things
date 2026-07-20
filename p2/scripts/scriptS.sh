@@ -2,8 +2,12 @@
 apt-get update -o Acquire::Check-Valid-Until=false
 apt-get install -y curl
 
-curl -sfL https://get.k3s.io | \
-  INSTALL_K3S_EXEC="--node-ip 192.168.56.110 --flannel-iface eth1 --write-kubeconfig-mode 644" \
+# curl -sfL https://get.k3s.io | \
+#   INSTALL_K3S_EXEC="--node-ip 192.168.56.110 --flannel-iface eth1 --write-kubeconfig-mode 644" \
+#   sh -
+
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.31.8+k3s1 \
+  INSTALL_K3S_EXEC="server --node-ip=192.168.56.110 --advertise-address=192.168.56.110 --flannel-iface=eth1 --write-kubeconfig-mode=644" \
   sh -
 
 until kubectl get nodes 2>/dev/null | grep -q "Ready"; do
