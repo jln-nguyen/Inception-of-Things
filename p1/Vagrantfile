@@ -3,7 +3,8 @@ Vagrant.configure("2") do |config|
 	config.vagrant.plugins = []  
 	ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 
-	config.vm.box = "generic/debian12"
+	config.vm.box = "debian/trixie64"
+	config.vm.synced_folder ".", "/vagrant", disabled: true
 	
 	config.vm.define "junguyenS" do |control|
 		control.vm.hostname = "junguyenS"
