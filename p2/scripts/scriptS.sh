@@ -20,6 +20,15 @@ cp /etc/rancher/k3s/k3s.yaml /home/vagrant/.kube/config
 chown -R vagrant:vagrant /home/vagrant/.kube/config
 echo "alias k='kubectl'" >> /home/vagrant/.bashrc
 
-kubectl apply -f /vagrant/confs/app-one.yaml
+kubectl apply -f /vagrant/confs/app-one/app-one-deployment.yaml
+kubectl apply -f /vagrant/confs/app-one/app-one-service.yaml
+
+kubectl apply -f /vagrant/confs/app-two/app-two-deployment.yaml
+kubectl apply -f /vagrant/confs/app-two/app-two-service.yaml
+
+kubectl apply -f /vagrant/confs/app-three/app-three-deployment.yaml
+kubectl apply -f /vagrant/confs/app-three/app-three-service.yaml
+
+kubectl apply -f /vagrant/confs/ingress.yaml
 
 echo "Master ready"
